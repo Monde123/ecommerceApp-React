@@ -1,4 +1,5 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
+import { View } from "react-native";
 import HomeNav from "./homeNav";
 import CartNav from "./CartNavigation";
 import Colors from "../styles/Colors";
@@ -9,14 +10,33 @@ export default function MyMenu() {
 
   return (
     <MainDrawer.Navigator
+      drawerContent={(props) => (
+        <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
+          
+          <DrawerItemList {...props} />
+
+          {/* Bloc du bas */}
+          <View style={{ marginTop: "auto", borderTopWidth: 1, borderColor: Colors.dimGray }}>
+            <DrawerItem
+              label="Paramètres"
+              icon={({ size, color }) => (
+                <Ionicons name="settings" size={size} color={color} />
+              )}
+              onPress={() => {
+                props.navigation.navigate("Settings");
+              }}
+            />
+          </View>
+        </DrawerContentScrollView>
+      )}
       screenOptions={{
         drawerActiveBackgroundColor: Colors.green,
         drawerActiveTintColor: Colors.white,
         drawerItemStyle: {
-          borderColor:Colors.dimGray,
+          borderColor: Colors.dimGray,
           borderWidth: 2,
           opacity: 0.8,
-          marginBottom: 8
+          marginBottom: 8,
         },
       }}
     >
@@ -26,7 +46,9 @@ export default function MyMenu() {
         options={{
           headerShown: false,
           title: "Accueil",
-          drawerIcon: () => <Ionicons name="home" size={24} />,
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
         }}
       />
       <MainDrawer.Screen
@@ -35,9 +57,18 @@ export default function MyMenu() {
         options={{
           headerShown: false,
           title: "Mon panier",
-          drawerIcon: () => (
-            <Ionicons name="cart-sharp" size={24} color="black" />
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="cart-sharp" size={size} color={color} />
           ),
+        }}
+      />
+      <MainDrawer.Screen
+        name="Settings"
+        component={HomeNav /* TODO: remplacer par ton écran Paramètres */}
+        options={{
+          headerShown: false,
+          title: "Paramètres",
+          drawerItemStyle: { display: "none" }, // Masqué dans la liste
         }}
       />
     </MainDrawer.Navigator>

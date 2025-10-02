@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     headerStyle: {
       backgroundColor: Colors.green,
     },
-    headerTitle: "Landing",
+    headerTitle: "Catalogue",
     headerTitleStyle: {
       color: Colors.white,
       fontSize: 20,

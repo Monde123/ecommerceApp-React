@@ -10,13 +10,29 @@ import addToCart from "../redux/actions/addToCart";
 import removeToCart from "../redux/actions/removeToCart";
 import { useDispatch, useSelector } from "react-redux";
 import Colors from "../styles/Colors";
+import Payment, { Course } from "../models/paymentModels";
+import addPayment from "../redux/actions/paymentAction";
+import clearCart from "../redux/actions/clearCart";
 
 const PanierScreens = ({ navigation }) => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cartCourse);
   const totalPrice = useSelector((state) => state.cart.total);
 
-  const dispatch = useDispatch();
+  // payment
+  const courses = () => cart.map((v) => new Course(v));
 
+  const handlePayment = () => {
+    const payment = new Payment({
+      course: courses(),
+      date: new Date(),
+      price: totalPrice.toFixed(2),
+    });
+    dispatch(addPayment(payment));
+    dispatch(clearCart());
+  };
+
+  //navigation state
   const navigateDetailsPage = (id) => {
     navigation.navigate("Infos", { userId: id });
   };
@@ -34,7 +50,7 @@ const PanierScreens = ({ navigation }) => {
     return (
       <View
         style={{
-          marginTop:15,
+          marginTop: 15,
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
@@ -114,12 +130,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: "space-around",
     alignItems: "center",
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
+
     flexShrink: 1,
     flexDirection: "row",
     elevation: 2,
-    paddingBottom:20,
+    paddingBottom: 20,
   },
   body: {
     height: "90%",
@@ -127,7 +142,7 @@ const styles = StyleSheet.create({
     marginBottom: 80,
   },
   btn: {
-    backgroundColor: Colors.green,
+    backgroundColor: Colors.lightOrange,
     padding: 10,
 
     borderRadius: 12,

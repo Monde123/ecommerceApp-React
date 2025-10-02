@@ -4,5 +4,5 @@ export default {
   green: "green",
   dimGray: "dimgray",
   lightGrey: "#ccc",
-  lightOrange: "#823d0bff",
+  lightOrange: "#ea9e08ff",
 };
