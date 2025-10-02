@@ -42,21 +42,7 @@ export default function ScreenNavigation() {
         options={{
           ...styles.headerInfos,
           headerTintColor: "white",
-          headerRight: () => {
-            return (
-              <Pressable
-                style={{
-                  marginRight: 12,
-                }}
-              >
-                <AntDesign
-                  name="shopping-cart"
-                  size={24}
-                  color={Colors.white}
-                />
-              </Pressable>
-            );
-          },
+         
         }}
       />
       <MainNav.Screen
