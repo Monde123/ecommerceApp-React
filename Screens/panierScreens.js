@@ -34,6 +34,7 @@ const PanierScreens = ({ navigation }) => {
     return (
       <View
         style={{
+          marginTop:15,
           flex: 1,
           justifyContent: "center",
           alignItems: "center",

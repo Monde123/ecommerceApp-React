@@ -21,23 +21,29 @@ export default function CartNav() {
       <Cart.Screen
         name="Cart"
         component={PanierScreens}
-        options={{
+        options={({ navigation }) => ({
           ...styles.headerPanier,
           headerTintColor: Colors.white,
+          headerLeft: () => (
+            <TouchableOpacity
+              style={{
+                marginLeft: 10,
+              }}
+              onPress={()=>navigation.openDrawer()}
+            >
+              <MaterialIcons name="menu" size={24} color={Colors.white} />
+            </TouchableOpacity>
+          ),
           headerRight: () => {
             if (cart.length > 0) {
               return (
                 <TouchableOpacity style={styles.btn} onPress={() => action()}>
-                  <MaterialIcons
-                    name="delete"
-                    size={26}
-                    color={Colors.white}
-                  />
+                  <MaterialIcons name="delete" size={26} color={Colors.white} />
                 </TouchableOpacity>
               );
             }
           },
-        }}
+        })}
       />
     </Cart.Navigator>
   );
