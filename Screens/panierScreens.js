@@ -4,6 +4,7 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import CoursesItem from "../components/coursesItem";
 import addToCart from "../redux/actions/addToCart";
@@ -28,9 +29,24 @@ const PanierScreens = ({ navigation }) => {
       date: new Date(),
       price: totalPrice.toFixed(2),
     });
-    dispatch(addPayment(payment));
-    dispatch(clearCart());
+    setTimeout(() => {
+      Alert.alert(
+        "Paiement",
+        "Appuiez sur suivant pour effectuer le paiement",
+        [
+          {
+            text: "Suivant",
+            onPress: () => {
+              dispatch(addPayment(payment));
+              dispatch(clearCart());
+              navigation.goBack();
+            },
+          },
+        ]
+      );
+    }, 200);
   };
+  //end payment
 
   //navigation state
   const navigateDetailsPage = (id) => {
@@ -112,7 +128,7 @@ const PanierScreens = ({ navigation }) => {
             {totalPrice.toFixed(2)} £
           </Text>
         </View>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={() => handlePayment()}>
           <Text style={styles.textBtn}>Payer</Text>
         </TouchableOpacity>
       </View>

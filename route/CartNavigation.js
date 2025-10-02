@@ -12,8 +12,8 @@ export default function CartNav() {
 
   const dispatch = useDispatch();
   const action = () => {
-    dispatch(clearCart());
     Alert.alert("Attention", "Panier vidé avec succès");
+    dispatch(clearCart());
   };
 
   return (
@@ -29,7 +29,7 @@ export default function CartNav() {
               style={{
                 marginLeft: 10,
               }}
-              onPress={()=>navigation.openDrawer()}
+              onPress={() => navigation.openDrawer()}
             >
               <MaterialIcons name="menu" size={24} color={Colors.white} />
             </TouchableOpacity>
