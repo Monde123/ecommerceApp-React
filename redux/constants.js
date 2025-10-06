@@ -3,3 +3,4 @@ export const REMOVE_TO_CART='REMOVE_TO_CART';
 export const CLEAR_CART= 'CLEAR_CART';
 export const ADD_PAYMENT= 'ADD_PAYMENT ';
 export const UPDATE_COURSE="UPDATE_COURSE";
+export const ADD_COURSE= "ADD_COURSE";

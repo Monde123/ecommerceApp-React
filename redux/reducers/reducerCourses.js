@@ -1,5 +1,5 @@
 import COURSES from "../../data/testData"
-import { UPDATE_COURSE } from "../constants";
+import { UPDATE_COURSE, ADD_COURSE } from "../constants";
 
 const initialState={
     existingCourses: COURSES,
@@ -16,7 +16,9 @@ const reducerCourses=( state= initialState, action)=>{
          )
         
         return{...state, allCourses: allCourses, existingCourses: state.existingCourses };
-  
+    case 'ADD_COURSE': 
+     const newCourse= action.course;
+     return{...state, allCourses: state.allCourses.concat(newCourse), existingCourses: state.existingCourses.concat(newCourse)}
     default:
           return state;
   }
