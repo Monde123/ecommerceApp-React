@@ -14,6 +14,7 @@ import Colors from "../styles/Colors";
 import Payment, { Course } from "../models/paymentModels";
 import addPayment from "../redux/actions/paymentAction";
 import clearCart from "../redux/actions/clearCart";
+import updateCourses from "../redux/actions/updateCourses";
 
 const PanierScreens = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const PanierScreens = ({ navigation }) => {
             onPress: () => {
               dispatch(addPayment(payment));
               dispatch(clearCart());
+              dispatch(updateCourses(courses()))
               navigation.goBack();
             },
           },

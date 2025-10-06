@@ -14,11 +14,15 @@ import { AntDesign } from "@expo/vector-icons";
 import removeToCart from "../redux/actions/removeToCart";
 import addToCart from "../redux/actions/addToCart";
 
-const InfosCourses = ({ route, navigation }) => {
+const InfosCourses = ({ route, navigation, }) => {
   const dispatch = useDispatch();
   const userId = route.params.userId;
   //verification du panier
   const isInCart = useSelector((state) => state.cart.cartCourse).some(
+    (course) => course.id === userId
+  );
+ ///verification des cours achetés
+ const isPaid = useSelector((state) => state.course.allCourses).some(
     (course) => course.id === userId
   );
 
@@ -44,18 +48,20 @@ const InfosCourses = ({ route, navigation }) => {
   };
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity
-          onPress={() => toggleIcons()}
-          style={{
-            marginRight: 12,
-          }}
-        >
-          <ShoppingIcons />
-        </TouchableOpacity>
-      ),
-    });
-  }, [navigation, isInCart, selectedCourse, userId]);
+    headerRight: isPaid
+      ? () => (
+          <TouchableOpacity
+            onPress={() => toggleIcons()}
+            style={{
+              marginRight: 12,
+            }}
+          >
+            <ShoppingIcons />
+          </TouchableOpacity>
+        )
+      : null,
+  });
+  }, [navigation, isInCart, selectedCourse, userId, isPaid]);
 
   return (
     <ScrollView>

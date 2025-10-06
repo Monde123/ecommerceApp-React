@@ -26,5 +26,8 @@
     "redux": "^5.0.1",
     "use-latest-callback": "^0.2.5"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^9.37.0"
+  }
 }

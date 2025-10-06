@@ -5,7 +5,7 @@ import addToCart from "../redux/actions/addToCart";
 import removeToCart from "../redux/actions/removeToCart";
 const UserCourses = ({ navigation }) => {
   const dispatch = useDispatch();
-  const coursesUsers = useSelector((state) => state.course.existingCourses);
+  const coursesUsers = useSelector((state) => state.course.allCourses);
   const navigateDetailsPage = (id) => {
     navigation.navigate("Infos", { userId: id });
   };
