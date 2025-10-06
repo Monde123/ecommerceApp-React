@@ -3,16 +3,16 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Colors from "../styles/Colors";
 
-import UserCourses from "../Screens/usersCourses";
+import MyCourseScreens from "../Screens/myCourses";
 
-export default function HomeNav() {
-  const Home = createStackNavigator();
+export default function MyCoursesNav() {
+  const MyCourses = createStackNavigator();
   return (
-    <Home.Navigator>
-      <Home.Screen
-        name="HomeNav"
-        component={UserCourses}
-        options={({ navigation }) => ({
+    <MyCourses.Navigator>
+      <MyCourses.Screen
+        name="MyCoursesNav"
+        component={MyCourseScreens}
+        options={({navigation}) => ({
           ...styles.headerHome,
           headerLeft: () => (
             <TouchableOpacity
@@ -24,17 +24,10 @@ export default function HomeNav() {
               <AntDesign name="menu" size={24} color={Colors.white} />
             </TouchableOpacity>
           ),
-          headerRight: () => (
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => navigation.navigate("MyCart")}
-            >
-              <AntDesign name="shopping-cart" size={24} color={Colors.white} />
-            </TouchableOpacity>
-          ),
+        
         })}
       />
-    </Home.Navigator>
+    </MyCourses.Navigator>
   );
 }
 
@@ -44,7 +37,7 @@ const styles = StyleSheet.create({
     headerStyle: {
       backgroundColor: Colors.green,
     },
-    headerTitle: "Catalogue",
+    headerTitle: "Mes cours",
     headerTitleStyle: {
       color: Colors.white,
       fontSize: 20,

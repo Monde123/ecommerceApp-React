@@ -5,9 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import ScreenNavigation from "./route/mainNav";
 
 export default function App() {
+  console.log("nouvelle version")
   return (
     <Provider store={store}>
       <NavigationContainer>
+
         <ScreenNavigation />
       </NavigationContainer>
     </Provider>

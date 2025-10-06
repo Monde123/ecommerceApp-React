@@ -11,6 +11,7 @@ import Colors from "../styles/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import PaymentNav from "./paiementsNav";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import BottomNav from "./BottomNavStack";
 
 export default function MyMenu() {
   const MainDrawer = createDrawerNavigator();
@@ -53,8 +54,8 @@ export default function MyMenu() {
       }}
     >
       <MainDrawer.Screen
-        name="HomeScreens"
-        component={HomeNav}
+        name="HomeStack"
+        component={BottomNav}
         options={{
           headerShown: false,
           title: "Accueil",
@@ -76,6 +77,7 @@ export default function MyMenu() {
             size = focused ? 28 : 24;
             return <Ionicons name="cart-sharp" size={size} color={color} />;
           },
+          
         }}
       />
       <MainDrawer.Screen

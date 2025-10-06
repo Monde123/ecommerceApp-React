@@ -3,12 +3,13 @@ class Payment {
   course = [];
   date;
   price;
-
+ instructorId;
   constructor({ id, course = [], date, price }) {
     this.id = id ?? this.generateId(); 
     this.course = course;
     this.date = date;
     this.price = price;
+  
   }
 
   generateId() {
@@ -21,12 +22,18 @@ class Course{
     id;
     title;
     price;
+    image;
+    description;
+    instructorId
     constructor({
-        id, title, price,
+        id, title, price,image, description,  instructorId
     }){
         this.id= id;
         this.title= title;
-        this.price= price
+        this.price= price;
+        this.image=image
+        this.description=description
+        this.instructorId=instructorId
     }
 } 
 

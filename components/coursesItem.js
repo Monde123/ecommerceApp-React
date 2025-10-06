@@ -64,6 +64,7 @@ const CoursesItem = ({
         <TouchableOpacity onPress={toggleIcons()}>
           <ShoppingIcons />
         </TouchableOpacity>
+        
       </View>
     </View>
   );

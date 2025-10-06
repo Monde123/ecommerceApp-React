@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import InfosCourses from "../Screens/detailsCourses";
 
 import MyMenu from "./drawerNav";
+import BottomNav from "./BottomNavStack";
 const MainNav = createStackNavigator();
 
 //
