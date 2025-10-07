@@ -47,6 +47,10 @@ const handleAddCourses=()=>{
         val={title}
         setValue={setTitle}
         />
+        <View style={styles.container}>
+      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={styles.image} />}
+    </View>
           <AddItem  type={'Image'}
           val={image}
         setValue={setImage}
@@ -55,8 +59,8 @@ const handleAddCourses=()=>{
         <AddItem type= {'Price'}  setValue={setPrice} val={price} />
 
 
-{ (title.trim()!== "" && description.trim() !=="" && image.trim() !=="" && !price.trim())
-   &&(
+         {(title.trim()!== "" && description.trim() !=="" && image.trim() !=="" )
+         &&(
         <TouchableOpacity  style={styles.button}  onPress={()=>handleAddCourses()} >
             <Text style={{color: Colors.white, fontWeight: 'bold',
                 fontSize: 18, 
@@ -71,7 +75,7 @@ const handleAddCourses=()=>{
 
 const styles = StyleSheet.create({
     button:{
-        margin:10,
+         margin:10,
         padding: 10,
         backgroundColor: Colors.green,
         alignSelf: "center",
@@ -79,6 +83,9 @@ const styles = StyleSheet.create({
         alignItems: "center", 
         justifyContent: "center",
         width: '90%'
+    },
+    container: {
+
     }
   
 })

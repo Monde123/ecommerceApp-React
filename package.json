@@ -16,6 +16,7 @@
     "@react-navigation/native-stack": "^7.3.26",
     "@react-navigation/stack": "^7.4.8",
     "expo": "54.0.12",
+    "expo-image-picker": "~17.0.8",
     "expo-status-bar": "~3.0.8",
     "react": "19.1.0",
     "react-native": "0.81.4",
@@ -28,6 +29,7 @@
   },
   "private": true,
   "devDependencies": {
-    "eslint": "^9.37.0"
+    "eslint": "^9.37.0",
+    "prettier": "3.6.2"
   }
 }

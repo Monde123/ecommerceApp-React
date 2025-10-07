@@ -15,6 +15,7 @@ import removeToCart from "../redux/actions/removeToCart";
 import addToCart from "../redux/actions/addToCart";
 
 const InfosCourses = ({ route, navigation, }) => {
+  console.log (navigation)
   const dispatch = useDispatch();
   const userId = route.params.userId;
   //verification du panier
