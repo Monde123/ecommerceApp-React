@@ -11,7 +11,7 @@ const AddItem = ({ type, val, setValue }) => {
     } else {
       setError("");
     }
-    setValue(value);
+setValue(value);
   };
 
   return (

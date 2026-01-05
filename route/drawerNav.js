@@ -4,7 +4,7 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View } from "react-native";
+import { View , Text} from "react-native";
 import HomeNav from "./homeNav";
 import CartNav from "./CartNavigation";
 import Colors from "../styles/Colors";
@@ -12,6 +12,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import PaymentNav from "./paiementsNav";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import BottomNav from "./BottomNavStack";
+import LoginScreen from "../Screens/auth/login";
+import { disconnect } from "../Screens/auth/authfunction";
 
 export default function MyMenu() {
   const MainDrawer = createDrawerNavigator();
@@ -31,12 +33,19 @@ export default function MyMenu() {
             }}
           >
             <DrawerItem
-              label="Paramètres"
+              label="Se Déconnecter"
+              labelStyle={{
+                color: 'red',
+                fontSize: 20,
+              }}
               icon={({ size, color }) => (
-                <Ionicons name="settings" size={size} color={color} />
+                <Ionicons name="log-out" size={28} color={'red'} />
               )}
               onPress={() => {
-                props.navigation.navigate("Settings");
+                setTimeout(() => {
+                  disconnect();
+                }, 2000) 
+                props.navigation.replace("splash");
               }}
             />
           </View>
@@ -77,7 +86,7 @@ export default function MyMenu() {
             size = focused ? 28 : 24;
             return <Ionicons name="cart-sharp" size={size} color={color} />;
           },
-          
+
         }}
       />
       <MainDrawer.Screen
@@ -94,15 +103,6 @@ export default function MyMenu() {
         }}
       />
 
-      <MainDrawer.Screen
-        name="Settings"
-        component={HomeNav /* TODO: remplacer par ton écran Paramètres */}
-        options={{
-          headerShown: false,
-          title: "Paramètres",
-          drawerItemStyle: { display: "none" }, // Masqué dans la liste
-        }}
-      />
     </MainDrawer.Navigator>
   );
 }

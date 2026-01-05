@@ -26,9 +26,9 @@ const CoursesItem = ({
 
   const toggleIcons = () => {
     if (isInCart) {
-    return  onRemoveToCart;
+      return onRemoveToCart;
     } else {
-    return  onAddToCart;
+      return onAddToCart;
     }
   };
 
@@ -64,7 +64,7 @@ const CoursesItem = ({
         <TouchableOpacity onPress={toggleIcons()}>
           <ShoppingIcons />
         </TouchableOpacity>
-        
+
       </View>
     </View>
   );
